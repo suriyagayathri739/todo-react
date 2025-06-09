@@ -5,8 +5,10 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   console.log(todos);
   const handleTodos = () => {
-    if(todo.length!=0)
-    setTodos((prev) => [...prev, todo]);
+    if (todo.length != 0) {
+      setTodos((prev) => [...prev, todo]);
+      setTodo("");
+    }
   };
   return (
     <>
@@ -19,6 +21,7 @@ const App = () => {
             <h2>Add New Todo</h2>
             <div className="grid">
               <input
+                value={todo}
                 onChange={(e) => setTodo(e.target.value)}
                 type="text"
                 placeholder="Enter your todo..."
@@ -36,7 +39,7 @@ const App = () => {
                   <div className="grid">
                     <div>
                       <strong>
-                        {key+1}. {todo}
+                        {key + 1}. {todo}
                       </strong>
                     </div>
                     <div>
