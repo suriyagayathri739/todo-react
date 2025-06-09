@@ -5,6 +5,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   console.log(todos);
   const handleTodos = () => {
+    if(todo.length!=0)
     setTodos((prev) => [...prev, todo]);
   };
   return (
