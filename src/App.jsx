@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  console.log(todos);
+  const [CompletedTodos, setCompletedTodos] = useState([]);
+  const handleMarkAsCompleted = (addedTodo) => {
+    setCompletedTodos((prev) => [...prev, addedTodo]);
+  };
+  // console.log(CompletedTodos);
   const handleTodos = () => {
     if (todo.length != 0) {
       setTodos((prev) => [...prev, todo]);
@@ -43,21 +47,18 @@ const App = () => {
                       </strong>
                     </div>
                     <div>
-                      <button className="secondary outline">Completed</button>
+                      {CompletedTodos.includes(todo) ? (
+                        <button className="secondary outline">Completed</button>
+                      ) : (
+                        <button onClick={() => handleMarkAsCompleted(todo)}>
+                          Mark As Completed
+                        </button>
+                      )}
                     </div>
+                  
                   </div>
                 </li>
               ))}
-              <li>
-                <div className="grid">
-                  <div>
-                    <strong>2. Todo2</strong>
-                  </div>
-                  <div>
-                    <button>Mark As Completed</button>
-                  </div>
-                </div>
-              </li>
             </ul>
           </section>
         </main>
